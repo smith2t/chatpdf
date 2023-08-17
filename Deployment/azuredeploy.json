@@ -417,44 +417,9 @@
       }
     },
     {
-      "type": "Microsoft.Resources/deploymentScripts",
-      "apiVersion": "2020-10-01",
-      "kind": "AzurePowerShell",
-      "name": "Wait5s",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.CognitiveServices/accounts', variables('aoaiSvcName'))]"
-      ],
-      "properties": {
-        "azPowerShellVersion": "9.7",
-        "scriptContent": "start-sleep -Seconds 5",
-        "cleanupPreference": "Always",
-        "retentionInterval": "PT1H"
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deploymentScripts",
-      "apiVersion": "2020-10-01",
-      "kind": "AzurePowerShell",
-      "name": "Wait10s",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.CognitiveServices/accounts', variables('aoaiSvcName'))]"
-      ],
-      "properties": {
-        "azPowerShellVersion": "9.7",
-        "scriptContent": "start-sleep -Seconds 10",
-        "cleanupPreference": "Always",
-        "retentionInterval": "PT1H"
-      }
-    },
-    {
       "type": "Microsoft.CognitiveServices/accounts/deployments",
       "apiVersion": "2023-05-01",
-      "name": "[concat(variables('aoaiSvcName'), '/embedding')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Resources/deploymentScripts','Wait10s')]"
-      ],
+      "name": "[concat(variables('aoaiSvcName'), '/embedding')]"
       "sku": {
         "name": "Standard",
         "capacity": 30
